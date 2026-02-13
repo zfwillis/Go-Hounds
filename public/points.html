@@ -18,55 +18,39 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-0 ms-sm-3">
-            <li class="nav-item"><a class="nav-link" href="points.html">Points</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="points.html">Points</a></li>
             <li class="nav-item"><a class="nav-link" href="prizes.html">Prizes</a></li>
             <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="account.html">Account</a></li>
+            <li class="nav-item"><a class="nav-link" href="account.html">Account</a></li>
         </ul>
         </div>
     </div>
     </nav>
-<div class="container">
-  <div class="hero">
-    <h1>Account</h1>
-    <p>Sign in to sync your check-ins across devices.</p>
-  </div>
+    <div class="container">
+    <div class="hero">
+        <h1>Your Points</h1>
+        <p class="mb-0">Attendance streaks and totals update after each home game check-in.</p>
+    </div>
 
   <div class="row g-3 mt-3">
     <div class="col-12 col-md-6">
       <div class="card h-100">
-        <div class="card-header">Log In</div>
+        <div class="card-header">Current Balance</div>
         <div class="card-body">
-          <form>
-            <div class="mb-3">
-              <label for="email" class="form-label">Loyola Email</label>
-              <input type="email" class="form-control" id="email" placeholder="abc@loyola.edu" required />
-            </div>
-            <div class="mb-3">
-              <label for="pwd" class="form-label">Password</label>
-              <input type="password" class="form-control" id="pwd" required minlength="6" />
-            </div>
-            <button type="submit" class="btn btn-evergreen">Log In</button>
-          </form>
+          <h2 class="fw-bold">1,240 pts</h2>
+          <p class="mb-2">Streak: 5 games</p>
+          <a class="btn btn-evergreen" href="prizes.html">Redeem a prize</a>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-6">
       <div class="card h-100">
-        <div class="card-header">Create Account</div>
-        <div class="card-body">
-          <form>
-            <div class="mb-3">
-              <label for="name" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Full name" />
-            </div>
-            <div class="mb-3">
-              <label for="classYear" class="form-label">Class Year</label>
-              <input type="number" class="form-control" id="classYear" min="2025" max="2030" />
-            </div>
-            <button type="submit" class="btn btn-evergreen">Create Account</button>
-          </form>
-        </div>
+        <div class="card-header">Recent Check-ins</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Feb 10 — Women’s Basketball vs Lehigh — +120</li>
+          <li class="list-group-item">Feb 7 — Men’s Basketball vs Army — +120</li>
+          <li class="list-group-item">Feb 3 — Women’s Lacrosse vs Towson — +200</li>
+        </ul>
       </div>
     </div>
   </div>

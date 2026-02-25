@@ -38,11 +38,47 @@
         <tr><th>Date</th><th>Sport</th><th>Opponent</th><th>Time</th><th>Action</th></tr>
       </thead>
       <tbody>
-        <tr><td>Feb 16</td><td>Men’s Basketball</td><td>Boston U</td><td>7:00 PM</td><td><button class="btn btn-evergreen btn-sm">Check In</button></td></tr>
-        <tr><td>Feb 18</td><td>Women’s Lacrosse</td><td>Navy</td><td>1:00 PM</td><td><button class="btn btn-evergreen btn-sm">Check In</button></td></tr>
-        <tr><td>Feb 22</td><td>Men’s Soccer</td><td>American</td><td>6:00 PM</td><td><button class="btn btn-evergreen btn-sm">Check In</button></td></tr>
+        <tr><td>Feb 16</td><td>Men's Basketball</td><td>Boston U</td><td>7:00 PM</td><td><button class="btn btn-evergreen btn-sm">Check In</button></td></tr>
+        <tr><td>Feb 18</td><td>Women's Lacrosse</td><td>Navy</td><td>1:00 PM</td><td><button class="btn btn-evergreen btn-sm">Check In</button></td></tr>
+        <tr><td>Feb 22</td><td>Men's Soccer</td><td>American</td><td>6:00 PM</td><td><button class="btn btn-evergreen btn-sm">Check In</button></td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="card mt-4 mb-4">
+    <div class="card-header">Game Check-In Form</div>
+    <div class="card-body">
+      <form action="" method="post">
+        <div class="row g-3">
+          <div class="col-12 col-sm-6">
+            <label for="checkinDate">Game Date</label>
+            <input type="date" id="checkinDate" name="checkinDate" />
+          </div>
+          <div class="col-12 col-sm-6">
+            <label for="sport">Sport</label>
+            <select id="sport" name="sport" multiple>
+              <option>Men's Basketball</option>
+              <option>Women's Basketball</option>
+              <option>Men's Lacrosse</option>
+              <option>Women's Lacrosse</option>
+              <option>Men's Soccer</option>
+              <option>Women's Soccer</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label for="opponent">Opponent</label>
+            <input type="text" id="opponent" name="opponent" placeholder="Opponent name"  />
+          </div>
+          <div class="col-12 col-sm-6">
+            <label for="studentId">Student ID</label>
+            <input type="text" id="studentId" name="studentId" placeholder="e.g. 1886501"  />
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-evergreen">Submit Check-In</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

@@ -1,9 +1,7 @@
-function showprizes() {
+function showPrizes() {
     document.getElementById("prizes").setAttribute("style", "visibility:visible;display:block");
-    document.getElementById("points-content").setAttribute("style", "visibility:hidden;display:none");
 }
 
-function hideprizes() {
+function hidePrizes() {
     document.getElementById("prizes").setAttribute("style", "visibility:hidden;display:none");
-    document.getElementById("points-content").setAttribute("style", "visibility:visible;display:block");
 }

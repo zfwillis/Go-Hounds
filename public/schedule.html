@@ -47,7 +47,7 @@
   <div class="card mt-4 mb-4">
     <div class="card-header">Game Check-In Form</div>
     <div class="card-body">
-      <form action="" method="post">
+      <form action="localhost:8080" id="checkInForm" method="post">
         <div class="row g-3">
           <div class="col-12 col-sm-6">
             <label for="checkinDate">Game Date</label>
@@ -55,13 +55,13 @@
           </div>
           <div class="col-12 col-sm-6">
             <label for="sport">Sport</label>
-            <select id="sport" name="sport" multiple>
-              <option>Men's Basketball</option>
-              <option>Women's Basketball</option>
-              <option>Men's Lacrosse</option>
-              <option>Women's Lacrosse</option>
-              <option>Men's Soccer</option>
-              <option>Women's Soccer</option>
+            <select id="sport" name="sport">
+              <option value = "mbball">Men's Basketball</option>
+              <option value = "wbball">Women's Basketball</option>
+              <option value = "mlac">Men's Lacrosse</option>
+              <option value = "wlac">Women's Lacrosse</option>
+              <option value = "msoc">Men's Soccer</option>
+              <option value = "wsoc">Women's Soccer</option>
             </select>
           </div>
           <div class="col-12 col-sm-6">
@@ -73,7 +73,7 @@
             <input type="text" id="studentId" name="studentId" placeholder="e.g. 1886501"  />
           </div>
           <div class="col-12">
-            <button type="submit" class="btn btn-evergreen">Submit Check-In</button>
+            <button type="submit" class="btn btn-evergreen" onclick = "return submitCheckIn();">Submit Check-In</button>
           </div>
         </div>
       </form>
@@ -81,6 +81,7 @@
   </div>
 </div>
 
+<script src="submitCheckIn.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+[
+    {"_id": 1, "name": "Greyhounds Jersey", "description": "Official Loyola Maryland Greyhounds replica jersey", "pointsCost": 1500, "category": "Apparel", "stock": 20},
+    {"_id": 2, "name": "Greyhounds Baseball Cap", "description": "Loyola Maryland embroidered adjustable cap in green and grey", "pointsCost": 500, "category": "Apparel", "stock": 40},
+    {"_id": 3, "name": "2 Tickets to a Lacrosse Game", "description": "Two tickets to a Loyola Maryland home lacrosse game at Ridley Athletic Complex", "pointsCost": 800, "category": "Tickets", "stock": 15},
+    {"_id": 4, "name": "2 Tickets to a Basketball Game", "description": "Two tickets to a Loyola Maryland home basketball game at Reitz Arena", "pointsCost": 700, "category": "Tickets", "stock": 15},
+    {"_id": 5, "name": "Greyhounds Hoodie", "description": "Loyola Maryland pullover hoodie in green with Greyhounds logo", "pointsCost": 1200, "category": "Apparel", "stock": 25},
+    {"_id": 6, "name": "Loyola Water Bottle", "description": "32oz stainless steel water bottle with Loyola Maryland Athletics logo", "pointsCost": 400, "category": "Accessories", "stock": 35},
+    {"_id": 7, "name": "Greyhounds Pennant", "description": "Official Loyola Maryland felt pennant for display", "pointsCost": 200, "category": "Collectibles", "stock": 50},
+    {"_id": 8, "name": "Meet & Greet with a Player", "description": "Exclusive post-game meet and greet with a Loyola Maryland varsity athlete", "pointsCost": 3000, "category": "Experiences", "stock": 5},
+    {"_id": 9, "name": "Greyhounds Tote Bag", "description": "Canvas tote bag featuring the Loyola Maryland Greyhounds mascot", "pointsCost": 300, "category": "Accessories", "stock": 45},
+    {"_id": 10, "name": "Sideline Experience Pass", "description": "Watch warmups from the sideline at a home Greyhounds athletic event", "pointsCost": 5000, "category": "Experiences", "stock": 3}
+]

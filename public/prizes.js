@@ -3,36 +3,62 @@ let lstPrizes = [];
 const readPrizes = async function() {
     const response = await fetch('/prize');
     lstPrizes = await response.json(); // extract JSON from response
-    let out = `<table class="table table-striped table-hover">
-                 <tr>
-                   <th>Name</th>
-                   <th>Description</th>
-                   <th>Category</th>
-                   <th>Points Cost</th>
-                   <th>Stock</th>
-                 </tr>`;
-    for (let i = 0; i < lstPrizes.length; i++) {
-        out += `<tr>
-                  <td>${lstPrizes[i].name}</td>
-                  <td>${lstPrizes[i].description}</td>
-                  <td>${lstPrizes[i].category}</td>
-                  <td>${lstPrizes[i].pointsCost} pts</td>
-                  <td>${lstPrizes[i].stock}</td>
-                </tr>`;
-    }
-    out += `</table>`;
-    document.getElementById('prizesData').innerHTML = out;
+    const prizesData = document.getElementById('prizesData');
+    prizesData.replaceChildren(buildPrizesTable(lstPrizes));
 }
 
-function showPrizes() {
-    document.getElementById("prizes").setAttribute("style", "visibility:visible;display:block");
-    document.getElementById("showBtn").setAttribute("style", "visibility:hidden");
-    document.getElementById("hideBtn").setAttribute("style", "visibility:visible");
-    readPrizes();
+function buildPrizesTable(prizes) {
+    const table = document.createElement('table');
+    table.className = 'table table-striped table-hover';
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const headers = ['Name', 'Description', 'Category', 'Points Cost', 'Stock'];
+
+    headers.forEach((headerText) => {
+        const th = document.createElement('th');
+        th.scope = 'col';
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    prizes.forEach((prize) => {
+        const row = document.createElement('tr');
+        const values = [
+            prize.name,
+            prize.description,
+            prize.category,
+            `${prize.pointsCost} pts`,
+            prize.stock
+        ];
+
+        values.forEach((value) => {
+            const td = document.createElement('td');
+            td.textContent = value;
+            row.appendChild(td);
+        });
+
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    return table;
+}
+
+async function showPrizes() {
+    document.getElementById('prizes').hidden = false;
+    document.getElementById('showBtn').hidden = true;
+    document.getElementById('hideBtn').hidden = false;
+    await readPrizes();
 }
 
 function hidePrizes() {
-    document.getElementById("prizes").setAttribute("style", "visibility:hidden;display:none");
-    document.getElementById("showBtn").setAttribute("style", "visibility:visible");
-    document.getElementById("hideBtn").setAttribute("style", "visibility:hidden");
+    document.getElementById('prizes').hidden = true;
+    document.getElementById('showBtn').hidden = false;
+    document.getElementById('hideBtn').hidden = true;
+    document.getElementById('prizesData').replaceChildren();
 }

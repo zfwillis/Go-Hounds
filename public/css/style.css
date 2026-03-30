@@ -54,3 +54,7 @@ body {
     background: var(--evergreen-dark);
     color: white;
 }
+
+.prize-alert {
+    margin-bottom: 1rem;
+}

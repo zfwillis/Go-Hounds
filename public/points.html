@@ -61,41 +61,74 @@
     </div>
 
     <div id="prizes" class="mt-3" hidden>
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-lg-4">
+          <div class="card h-100">
+            <div class="card-header">Add a New Prize</div>
+            <div class="card-body">
+              <form id="createPrizeForm">
+                <div class="mb-3">
+                  <label class="form-label" for="createName">Prize Name</label>
+                  <input class="form-control" id="createName" name="name" type="text" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="createCategory">Category</label>
+                  <input class="form-control" id="createCategory" name="category" type="text" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="createPoints">Points</label>
+                  <input class="form-control" id="createPoints" name="pointsCost" type="number" min="0" required />
+                </div>
+                <button class="btn btn-evergreen w-100" type="submit">Create Prize</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="card h-100">
+            <div class="card-header">Update a Prize</div>
+            <div class="card-body">
+              <form id="updatePrizeForm">
+                <div class="mb-3">
+                  <label class="form-label" for="updatePrizeId">Prize</label>
+                  <select class="form-select" id="updatePrizeId" name="id" required></select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="updateName">New Name</label>
+                  <input class="form-control" id="updateName" name="name" type="text" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="updateCategory">Category</label>
+                  <input class="form-control" id="updateCategory" name="category" type="text" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="updatePoints">New Points</label>
+                  <input class="form-control" id="updatePoints" name="pointsCost" type="number" min="0" required />
+                </div>
+                <button class="btn btn-evergreen w-100" type="submit">Update Prize</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="card h-100">
+            <div class="card-header">Delete a Prize</div>
+            <div class="card-body">
+              <form id="deletePrizeForm">
+                <div class="mb-3">
+                  <label class="form-label" for="deletePrizeId">Prize</label>
+                  <select class="form-select" id="deletePrizeId" name="id" required></select>
+                </div>
+                <button class="btn btn-danger w-100" type="submit">Delete Prize</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="prizeMessage" class="alert prize-alert" hidden></div>
       <div id="prizesData">
         <!-- Filled by DOM manipulation in prizes.js -->
       </div>
-      <!--<div class="row g-3">
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="card-header">Tier 1 - 500 pts</div>
-            <div class="card-body">
-              <h5 class="card-title">Loyola Sticker Pack</h5>
-              <p class="card-text">Pick up at the ticket office.</p>
-              <button class="btn btn-evergreen">Redeem</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="card-header">Tier 2 - 1200 pts</div>
-            <div class="card-body">
-              <h5 class="card-title">Greyhounds Scarf</h5>
-              <p class="card-text">Great for chilly Ridley games.</p>
-              <button class="btn btn-evergreen">Redeem</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="card-header">Tier 3 - 2500 pts</div>
-            <div class="card-body">
-              <h5 class="card-title">Sideline Pass</h5>
-              <p class="card-text">Walk the sideline for one home game.</p>
-              <button class="btn btn-evergreen">Redeem</button>
-            </div>
-          </div>
-        </div>
-      </div>-->
     </div>
 </div>
 

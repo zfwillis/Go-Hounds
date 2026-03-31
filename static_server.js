@@ -10,10 +10,10 @@ let port = 4000;
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.get('/prize', prizeController.getAllPrizes);
-app.post('/prize', prizeController.createPrize);
-app.patch('/prize/:id', prizeController.updatePrize);
-app.delete('/prize/:id', prizeController.deletePrize);
+app.get('/prize', prizeController.getAll);
+app.post('/prize', prizeController.postCreateOrUpdate);
+app.patch('/prize/:id', prizeController.postCreateOrUpdate);
+app.delete('/prize/:id', prizeController.remove);
 
 app.use(express.static('public'));
 

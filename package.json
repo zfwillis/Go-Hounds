@@ -1,7 +1,20 @@
 {
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
   "dependencies": {
     "express": "^5.2.1",
     "mongodb": "^7.1.0",
     "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "server/model/prizeDao.js"
+    ],
+    "testEnvironment": "node"
   }
 }

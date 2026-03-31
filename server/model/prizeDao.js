@@ -9,7 +9,13 @@ async function readPrizes() {
 }
 
 async function writePrizes(prizes) {
-    await fs.writeFile(prizesFilePath, `${JSON.stringify(prizes, null, 4)}\n`, 'utf8');
+    await fs.writeFile(prizesFilePath, JSON.stringify(prizes, null, 4), 'utf8');
+}
+
+function pos(prizes, id) { // not exported, finds the pos in the array
+    for (let i = 0; i < prizes.length; i++)
+        if (prizes[i]._id === id) { return i; }
+    return -1;
 }
 
 exports.getAllPrizes = async function() {
@@ -18,59 +24,38 @@ exports.getAllPrizes = async function() {
 
 exports.createPrize = async function(prizeData) {
     const prizes = await readPrizes();
-    const nextId = prizes.reduce(function(maxId, prize) {
-        return Math.max(maxId, prize._id);
-    }, 0) + 1;
 
-    const newPrize = {
-        _id: nextId,
-        name: prizeData.name,
-        description: `${prizeData.name} prize option`,
-        pointsCost: prizeData.pointsCost,
-        category: prizeData.category,
-        stock: 0,
-    };
+    if (prizes.length === 0) prizeData._id = 1;
+    else prizeData._id = prizes[prizes.length - 1]._id + 1;
 
-    prizes.push(newPrize);
+    prizes.push(prizeData);
     await writePrizes(prizes);
-
-    return newPrize;
+    return prizeData;
 };
 
-exports.updatePrize = async function(id, prizeData) {
+exports.readPrize = async function(id) {
     const prizes = await readPrizes();
-    const prizeIndex = prizes.findIndex(function(prize) {
-        return prize._id === id;
-    });
-
-    if (prizeIndex === -1) {
-        return null;
-    }
-
-    prizes[prizeIndex] = {
-        ...prizes[prizeIndex],
-        name: prizeData.name,
-        category: prizeData.category,
-        pointsCost: prizeData.pointsCost,
-    };
-
-    await writePrizes(prizes);
-    return prizes[prizeIndex];
+    const index = pos(prizes, id);
+    if (index >= 0) { return prizes[index]; }
+    return null;
 };
 
 exports.deletePrize = async function(id) {
     const prizes = await readPrizes();
-    const prizeIndex = prizes.findIndex(function(prize) {
-        return prize._id === id;
-    });
-
-    if (prizeIndex === -1) {
-        return null;
-    }
-
-    const deletedPrize = prizes[prizeIndex];
-    prizes.splice(prizeIndex, 1);
+    const index = pos(prizes, id);
+    let prize = null;
+    if (index >= 0) { prize = prizes[index]; prizes.splice(index, 1); }
     await writePrizes(prizes);
+    return prize;
+};
 
-    return deletedPrize;
+exports.updatePrize = async function(id, prizeData) {
+    const prizes = await readPrizes();
+    const index = pos(prizes, id);
+    if (index === -1) return null;
+    prizes[index].name = prizeData.name;
+    prizes[index].category = prizeData.category;
+    prizes[index].pointsCost = prizeData.pointsCost;
+    await writePrizes(prizes);
+    return prizes[index];
 };

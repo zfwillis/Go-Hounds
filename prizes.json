@@ -1,10 +1,10 @@
 [
     {
         "_id": 1,
-        "name": "Greyhounds Jersey",
+        "name": "Updated Prize",
         "description": "Official Loyola Maryland Greyhounds replica jersey",
-        "pointsCost": 1496,
-        "category": "Apparel",
+        "pointsCost": 50,
+        "category": "Home",
         "stock": 20
     },
     {
@@ -64,11 +64,21 @@
         "stock": 45
     },
     {
-        "_id": 10,
-        "name": "Sideline Experience Pass",
-        "description": "Watch warmups from the sideline at a home Greyhounds athletic event",
-        "pointsCost": 5000,
-        "category": "Experiences",
-        "stock": 3
+        "name": "Blanket",
+        "category": "Home",
+        "pointsCost": 120,
+        "_id": 10
+    },
+    {
+        "name": "Blanket",
+        "category": "Home",
+        "pointsCost": 120,
+        "_id": 11
+    },
+    {
+        "name": "Blanket",
+        "category": "Home",
+        "pointsCost": 120,
+        "_id": 12
     }
 ]

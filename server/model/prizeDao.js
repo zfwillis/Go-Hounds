@@ -24,13 +24,20 @@ exports.getAllPrizes = async function() {
 
 exports.createPrize = async function(prizeData) {
     const prizes = await readPrizes();
+    const newPrize = {
+        name: prizeData.name,
+        description: prizeData.description || '',
+        category: prizeData.category,
+        pointsCost: prizeData.pointsCost,
+        stock: prizeData.stock ?? 0,
+    };
 
-    if (prizes.length === 0) prizeData._id = 1;
-    else prizeData._id = prizes[prizes.length - 1]._id + 1;
+    if (prizes.length === 0) newPrize._id = 1;
+    else newPrize._id = prizes[prizes.length - 1]._id + 1;
 
-    prizes.push(prizeData);
+    prizes.push(newPrize);
     await writePrizes(prizes);
-    return prizeData;
+    return newPrize;
 };
 
 exports.readPrize = async function(id) {

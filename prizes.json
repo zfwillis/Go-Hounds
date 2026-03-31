@@ -3,17 +3,9 @@
         "_id": 1,
         "name": "Updated Prize",
         "description": "Official Loyola Maryland Greyhounds replica jersey",
-        "pointsCost": 50,
+        "pointsCost": 100,
         "category": "Home",
         "stock": 20
-    },
-    {
-        "_id": 2,
-        "name": "Greyhounds Baseball Cap",
-        "description": "Loyola Maryland embroidered adjustable cap in green and grey",
-        "pointsCost": 500,
-        "category": "Apparel",
-        "stock": 40
     },
     {
         "_id": 3,
@@ -73,12 +65,12 @@
         "name": "Blanket",
         "category": "Home",
         "pointsCost": 120,
-        "_id": 11
+        "_id": 12
     },
     {
-        "name": "Blanket",
-        "category": "Home",
-        "pointsCost": 120,
-        "_id": 12
+        "name": "T-shirt",
+        "category": "Clothing",
+        "pointsCost": 200,
+        "_id": 13
     }
 ]

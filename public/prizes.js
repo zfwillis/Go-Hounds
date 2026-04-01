@@ -14,7 +14,7 @@ function buildPrizesTable(prizes) {
 
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
-    const headers = ['Name', 'Description', 'Category', 'Points Cost', 'Stock'];
+    const headers = ['Name', 'Description', 'Category', 'Points Cost'];
 
     headers.forEach((headerText) => {
         const th = document.createElement('th');
@@ -33,8 +33,7 @@ function buildPrizesTable(prizes) {
             prize.name,
             prize.description,
             prize.category,
-            `${prize.pointsCost} pts`,
-            prize.stock
+            `${prize.pointsCost} pts`
         ];
 
         values.forEach((value) => {

@@ -1,68 +1,70 @@
-const fs = require('fs/promises');
-const path = require('path');
+const seedPrizes = require('../../prizes.json');
 
-const prizesFilePath = path.join(__dirname, '..', '..', 'prizes.json');
+exports.lstPrizes = seedPrizes.map(function(prize) {
+    return { ...prize };
+});
 
-async function readPrizes() {
-    const prizesJson = await fs.readFile(prizesFilePath, 'utf8');
-    return JSON.parse(prizesJson);
-}
-
-async function writePrizes(prizes) {
-    await fs.writeFile(prizesFilePath, JSON.stringify(prizes, null, 4), 'utf8');
-}
-
-function pos(prizes, id) { // not exported, finds the pos in the array
-    for (let i = 0; i < prizes.length; i++)
-        if (prizes[i]._id === id) { return i; }
+function pos(id) {
+    for (let i = 0; i < exports.lstPrizes.length; i++) {
+        if (exports.lstPrizes[i]._id === id) {
+            return i;
+        }
+    }
     return -1;
 }
 
-exports.getAllPrizes = async function() {
-    return readPrizes();
+exports.getAllPrizes = function() {
+    return exports.lstPrizes;
 };
 
-exports.createPrize = async function(prizeData) {
-    const prizes = await readPrizes();
+exports.readPrize = function(id) {
+    const index = pos(id);
+    if (index >= 0) {
+        return exports.lstPrizes[index];
+    }
+    return null;
+};
+
+exports.createPrize = function(prizeData) {
     const newPrize = {
         name: prizeData.name,
         description: prizeData.description || '',
         category: prizeData.category,
-        pointsCost: prizeData.pointsCost,
-        stock: prizeData.stock ?? 0,
+        pointsCost: prizeData.pointsCost
     };
 
-    if (prizes.length === 0) newPrize._id = 1;
-    else newPrize._id = prizes[prizes.length - 1]._id + 1;
+    if (exports.lstPrizes.length === 0) {
+        newPrize._id = 1;
+    } else {
+        newPrize._id = exports.lstPrizes[exports.lstPrizes.length - 1]._id + 1;
+    }
 
-    prizes.push(newPrize);
-    await writePrizes(prizes);
+    exports.lstPrizes.push(newPrize);
     return newPrize;
 };
 
-exports.readPrize = async function(id) {
-    const prizes = await readPrizes();
-    const index = pos(prizes, id);
-    if (index >= 0) { return prizes[index]; }
-    return null;
+exports.updatePrize = function(id, prizeData) {
+    const index = pos(id);
+    if (index === -1) {
+        return null;
+    }
+
+    exports.lstPrizes[index].name = prizeData.name;
+    exports.lstPrizes[index].description = prizeData.description || '';
+    exports.lstPrizes[index].category = prizeData.category;
+    exports.lstPrizes[index].pointsCost = prizeData.pointsCost;
+
+    return exports.lstPrizes[index];
 };
 
-exports.deletePrize = async function(id) {
-    const prizes = await readPrizes();
-    const index = pos(prizes, id);
+exports.deletePrize = function(id) {
+    const index = pos(id);
     let prize = null;
-    if (index >= 0) { prize = prizes[index]; prizes.splice(index, 1); }
-    await writePrizes(prizes);
-    return prize;
-};
 
-exports.updatePrize = async function(id, prizeData) {
-    const prizes = await readPrizes();
-    const index = pos(prizes, id);
-    if (index === -1) return null;
-    prizes[index].name = prizeData.name;
-    prizes[index].category = prizeData.category;
-    prizes[index].pointsCost = prizeData.pointsCost;
-    await writePrizes(prizes);
-    return prizes[index];
+    if (index >= 0) {
+        prize = exports.lstPrizes[index];
+        exports.lstPrizes.splice(index, 1);
+    }
+
+    return prize;
 };

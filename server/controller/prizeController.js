@@ -1,51 +1,36 @@
 const prizeDao = require('../model/prizeDao');
 
-exports.getAllPrizes = async function(req, res, next) {
-    try {
-        const prizes = await prizeDao.getAllPrizes();
-        res.status(200).json(prizes);
-    } catch (error) {
-        next(error);
-    }
+exports.getAllPrizes = function(req, res) {
+    const prizes = prizeDao.getAllPrizes();
+    res.status(200).json(prizes);
+    res.end()
 };
 
-exports.getPrizeById = async function(req, res, next) {
-    try {
-        const id = Number(req.params.id);
-        const prize = await prizeDao.readPrize(id);
-        res.status(200).json(prize);
-    } catch (error) {
-        next(error);
-    }
+exports.getPrizeById = function(req, res) {
+    const id = Number(req.params.id);
+    const prize = prizeDao.readPrize(id);
+    res.status(200).json(prize);
+    res.end()
 };
 
-exports.createPrize = async function(req, res, next) {
-    try {
-        const prize = req.body;
-        const createdPrize = await prizeDao.createPrize(prize);
-        res.status(201).json(createdPrize);
-    } catch (error) {
-        next(error);
-    }
+exports.createPrize = function(req, res) {
+    const prize = req.body;
+    const createdPrize = prizeDao.createPrize(prize);
+    res.status(201).json(createdPrize);
+    res.end()
 };
 
-exports.updatePrize = async function(req, res, next) {
-    try {
-        const id = Number(req.params.id);
-        const prize = req.body;
-        const updatedPrize = await prizeDao.updatePrize(id, prize);
-        res.status(200).json(updatedPrize);
-    } catch (error) {
-        next(error);
-    }
+exports.updatePrize = function(req, res) {
+    const id = Number(req.params.id);
+    const prize = req.body;
+    const updatedPrize = prizeDao.updatePrize(id, prize);
+    res.status(200).json(updatedPrize);
+    res.end()
 };
 
-exports.deletePrize = async function(req, res, next) {
-    try {
-        const id = Number(req.params.id);
-        const deletedPrize = await prizeDao.deletePrize(id);
-        res.status(200).json(deletedPrize);
-    } catch (error) {
-        next(error);
-    }
+exports.deletePrize = function(req, res) {
+    const id = Number(req.params.id);
+    const deletedPrize = prizeDao.deletePrize(id);
+    res.status(200).json(deletedPrize);
+    res.end()
 };

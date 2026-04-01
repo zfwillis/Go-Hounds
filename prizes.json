@@ -1,59 +1,38 @@
 [
     {
-        "_id": 1,
-        "name": "Updated Prize",
-        "description": "Official Loyola Maryland Greyhounds replica jersey",
-        "pointsCost": 100,
-        "category": "Home",
-        "stock": 20
-    },
-    {
         "_id": 3,
         "name": "2 Tickets to a Lacrosse Game",
         "description": "Two tickets to a Loyola Maryland home lacrosse game at Ridley Athletic Complex",
         "pointsCost": 800,
-        "category": "Tickets",
-        "stock": 15
-    },
-    {
-        "_id": 5,
-        "name": "Greyhounds Hoodie",
-        "description": "Loyola Maryland pullover hoodie in green with Greyhounds logo",
-        "pointsCost": 1200,
-        "category": "Apparel",
-        "stock": 25
+        "category": "Tickets"
     },
     {
         "_id": 6,
-        "name": "Loyola Water Bottle",
+        "name": "Water Bottle",
         "description": "32oz stainless steel water bottle with Loyola Maryland Athletics logo",
         "pointsCost": 400,
-        "category": "Accessories",
-        "stock": 35
+        "category": "Accessories"
     },
     {
         "_id": 7,
         "name": "Greyhounds Pennant",
         "description": "Official Loyola Maryland felt pennant for display",
         "pointsCost": 200,
-        "category": "Collectibles",
-        "stock": 50
+        "category": "Collectibles"
     },
     {
         "_id": 8,
         "name": "Meet & Greet with a Player",
         "description": "Exclusive post-game meet and greet with a Loyola Maryland varsity athlete",
         "pointsCost": 3000,
-        "category": "Experiences",
-        "stock": 5
+        "category": "Experiences"
     },
     {
         "_id": 9,
         "name": "Greyhounds Tote Bag",
         "description": "Canvas tote bag featuring the Loyola Maryland Greyhounds mascot",
         "pointsCost": 300,
-        "category": "Accessories",
-        "stock": 45
+        "category": "Accessories"
     },
     {
         "name": "Blanket",
@@ -72,5 +51,12 @@
         "category": "Clothing",
         "pointsCost": 200,
         "_id": 13
+    },
+    {
+        "name": "Loyola Sweatshirt",
+        "description": "",
+        "category": "Clothing",
+        "pointsCost": 400,
+        "_id": 14
     }
 ]

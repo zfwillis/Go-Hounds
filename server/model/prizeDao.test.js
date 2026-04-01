@@ -1,37 +1,55 @@
 const prizeDao = require('./prizeDao');
 
-test('getAllPrizes returns a list', function() {
+test('getAllPrizes returns the seeded prizes', function() {
     const prizes = prizeDao.getAllPrizes();
-    expect(prizes).toBeDefined();
     expect(prizes.length).toBeGreaterThan(0);
+    expect(prizes[0]._id).toBeDefined();
 });
 
-test('createPrize adds a new prize', function() {
+test('createPrize can be read back and deleted', function() {
     const newPrize = { name: 'Blanket', category: 'Home', pointsCost: 120 };
     const created = prizeDao.createPrize(newPrize);
-    expect(created).toBeDefined();
+
+    const found = prizeDao.readPrize(created._id);
+    const deleted = prizeDao.deletePrize(created._id);
+    const missing = prizeDao.readPrize(created._id);
+
     expect(created._id).toBeDefined();
-});
-
-test('readPrize returns null for a prize that does not exist', function() {
-    const prize = prizeDao.readPrize(-1);
-    expect(prize).toBeNull();
-});
-
-test('updatePrize returns null for a prize that does not exist', function() {
-    const result = prizeDao.updatePrize(-1, { name: 'X', category: 'Y', pointsCost: 10 });
-    expect(result).toBeNull();
-});
-
-test('deletePrize returns null for a prize that does not exist', function() {
-    const result = prizeDao.deletePrize(-1);
-    expect(result).toBeNull();
+    expect(found.name).toBe(created.name);
+    expect(deleted._id).toBe(created._id);
+    expect(missing).toBeNull();
 });
 
 test('updatePrize updates an existing prize', function() {
-    const prizes = prizeDao.getAllPrizes();
-    const existingId = prizes[0]._id;
-    const result = prizeDao.updatePrize(existingId, { name: 'Updated Prize', category: 'Home', pointsCost: 50 });
-    expect(result).toBeDefined();
-    expect(result._id).toBe(existingId);
+    const existingPrize = prizeDao.getAllPrizes()[0];
+    const originalPrize = { ...existingPrize };
+    const result = prizeDao.updatePrize(existingPrize._id, {
+        name: 'Updated Prize',
+        description: 'Updated Description',
+        category: 'Home',
+        pointsCost: 50
+    });
+
+    expect(result._id).toBe(existingPrize._id);
+    expect(result.name).toBe('Updated Prize');
+    expect(result.pointsCost).toBe(50);
+
+    prizeDao.updatePrize(originalPrize._id, originalPrize);
+});
+
+test('missing prize operations return null', function() {
+    expect(prizeDao.readPrize(-1)).toBeNull();
+    expect(prizeDao.updatePrize(-1, { name: 'X', category: 'Y', pointsCost: 10 })).toBeNull();
+    expect(prizeDao.deletePrize(-1)).toBeNull();
+});
+
+test('createPrize starts ids at 1 when the list is empty', function() {
+    const originalPrizes = prizeDao.lstPrizes;
+    prizeDao.lstPrizes = [];
+
+    const created = prizeDao.createPrize({ name: 'Starter Prize', category: 'Test', pointsCost: 10 });
+
+    expect(created._id).toBe(1);
+
+    prizeDao.lstPrizes = originalPrizes;
 });

@@ -25,12 +25,12 @@ exports.updatePrize = function(req, res) {
     const prize = req.body;
     const updatedPrize = prizeDao.updatePrize(id, prize);
     res.status(200).json(updatedPrize);
-    res.end();
+    res.end()
 };
 
 exports.deletePrize = function(req, res) {
     const id = Number(req.params.id);
     const deletedPrize = prizeDao.deletePrize(id);
     res.status(200).json(deletedPrize);
-    res.end();
+    res.end()
 };

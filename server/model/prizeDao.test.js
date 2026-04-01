@@ -1,4 +1,4 @@
-const prizeDao = require('../model/prizeDao');
+const prizeDao = require('./prizeDao');
 
 test('getAllPrizes returns a list', function() {
     const prizes = prizeDao.getAllPrizes();

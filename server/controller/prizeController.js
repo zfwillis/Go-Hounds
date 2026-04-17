@@ -1,36 +1,41 @@
-const prizeDao = require('../model/prizeDao');
+const prizeDao = require('../model/prizeDaoMongoose');
 
-exports.getAllPrizes = function(req, res) {
-    const prizes = prizeDao.getAllPrizes();
-    res.status(200).json(prizes);
-    res.end()
+exports.getAllPrizes = async function(req, res) {
+    res.status(200);
+    res.send(await prizeDao.getAllPrizes());
+    res.end();
 };
 
-exports.getPrizeById = function(req, res) {
-    const id = Number(req.params.id);
-    const prize = prizeDao.readPrize(id);
-    res.status(200).json(prize);
-    res.end()
+exports.getPrizeById = async function(req, res) {
+    let id = req.params.id;
+    let prize = await prizeDao.readPrize(id);
+    if (prize != null) {
+        res.status(200);
+        res.send(prize);
+    } else {
+        res.status(404);
+        res.send({ msg: 'Prize with this ID does not exist' });
+    }
+    res.end();
 };
 
-exports.createPrize = function(req, res) {
-    const prize = req.body;
-    const createdPrize = prizeDao.createPrize(prize);
-    res.status(201).json(createdPrize);
-    res.end()
+exports.createPrize = async function(req, res) {
+    const createdPrize = await prizeDao.createPrize(req.body);
+    res.status(201);
+    res.send(createdPrize);
+    res.end();
 };
 
-exports.updatePrize = function(req, res) {
-    const id = Number(req.params.id);
-    const prize = req.body;
-    const updatedPrize = prizeDao.updatePrize(id, prize);
-    res.status(200).json(updatedPrize);
-    res.end()
+exports.updatePrize = async function(req, res) {
+    const updatedPrize = await prizeDao.updatePrize(req.params.id, req.body);
+    res.status(200);
+    res.send(updatedPrize);
+    res.end();
 };
 
-exports.deletePrize = function(req, res) {
-    const id = Number(req.params.id);
-    const deletedPrize = prizeDao.deletePrize(id);
-    res.status(200).json(deletedPrize);
-    res.end()
+exports.deletePrize = async function(req, res) {
+    const deletedPrize = await prizeDao.deletePrize(req.params.id);
+    res.status(200);
+    res.send(deletedPrize);
+    res.end();
 };

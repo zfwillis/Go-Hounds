@@ -53,7 +53,6 @@ exports.updatePrize = function(id, prizeData) {
     exports.lstPrizes[index].description = prizeData.description || '';
     exports.lstPrizes[index].category = prizeData.category;
     exports.lstPrizes[index].pointsCost = prizeData.pointsCost;
-
     return exports.lstPrizes[index];
 };
 

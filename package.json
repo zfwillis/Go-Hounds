@@ -4,8 +4,10 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongodb": "^7.1.0",
+    "mongodb": "^7.1.1",
+    "mongoose": "^9.4.1",
     "morgan": "^1.10.1"
   },
   "devDependencies": {
